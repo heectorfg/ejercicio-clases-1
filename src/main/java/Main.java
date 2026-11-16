@@ -1,4 +1,5 @@
 import dominio.Coche;
+import dominio.CuentaCorriente;
 import dominio.Libro;
 
 void main() {
@@ -9,13 +10,16 @@ void main() {
 void menu(Scanner entrada) {
     System.out.println("Elije que programa quieres ejecutar:" +
             "\n-ejercicio 1 (1)" +
-            "\n-ejercicio 2 (2)");
+            "\n-ejercicio 2 (2)" +
+            "\n-ejercicio 3 (3)");
     int usuario = entrada.nextInt();
     switch (usuario) {
         case 1->
             ejercicio1(entrada);
         case 2->
             ejercicio2();
+        case 3->
+            ejercicio3();
     }
 }
 
@@ -37,9 +41,13 @@ void ejercicio2() {
 
     for(Coche coche : coches) {
         coche.mostrarEstado();
-        System.out.println(coche.estaParado() ? "El coche esta parado" : "El coche esta en marcha");
+        System.out.println(coche.estaParado(coche.getVelActual()) ? "El coche esta parado" : "El coche esta en marcha");
 
         coche.acelerar(100);
         System.out.println("Tras acelerar 100: " + getClass());
     }
+}
+
+void ejercicio3() {
+    CuentaCorriente[] cuenta = {};
 }
