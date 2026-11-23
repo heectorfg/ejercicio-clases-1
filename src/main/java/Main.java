@@ -1,6 +1,4 @@
-import dominio.Coche;
-import dominio.CuentaCorriente;
-import dominio.Libro;
+import dominio.*;
 
 void main() {
     Scanner entrada = new Scanner(System.in);
@@ -9,9 +7,10 @@ void main() {
 
 void menu(Scanner entrada) {
     System.out.println("Elije que programa quieres ejecutar:" +
-            "\n-ejercicio 1 (1)" +
-            "\n-ejercicio 2 (2)" +
-            "\n-ejercicio 3 (3)");
+            "\n-ejercicio libros (1)" +
+            "\n-ejercicio coches (2)" +
+            "\n-ejercicio estudiantes (3)" +
+            "\n-ejercicio reloj (4)");
     int usuario = entrada.nextInt();
     switch (usuario) {
         case 1->
@@ -20,6 +19,8 @@ void menu(Scanner entrada) {
             ejercicio2();
         case 3->
             ejercicio3();
+        case 4->
+            ejercicio4(entrada);
     }
 }
 
@@ -49,5 +50,33 @@ void ejercicio2() {
 }
 
 void ejercicio3() {
-    CuentaCorriente[] cuenta = {};
+    Estudiante[] estudiantes = {new Estudiante("Pedro", 90, "47i5485i"),
+            new Estudiante("Pedro", 90, "47i5485i"),
+            new Estudiante("Pedro", 90, "47i5485i"),
+            new Estudiante("Pedro", 90, "47i5485i"),
+            new Estudiante("Pedro", 90, "47i5485i")
+    };
+
+}
+void ejercicio4(Scanner entrada) {
+    Reloj_digital reloj = new Reloj_digital();
+
+    System.out.println("Introduce la hora");
+    int h = entrada.nextInt();
+
+    System.out.println("Introduce los minutos");
+    int m = entrada.nextInt();
+
+    System.out.println("Introduce los segundos");
+    int s = entrada.nextInt();
+
+    reloj.ajustarHora(h, m, s);
+
+    System.out.println("Hora de inicio");
+    reloj.mostrarHora();
+
+    for (int i = 0; i < 20; i++) {
+        reloj.avanzarSegundo();
+        reloj.mostrarHora();
+    }
 }
